@@ -9,6 +9,7 @@
         @include bgPosition('../img/kvartira/radjiMobile.webp');
     }
     .card_item-desctop {
+        z-index: 200;
         position: fixed;
         width: 164.56px;
         height: 164.56px;

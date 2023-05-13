@@ -208,12 +208,6 @@ const addCardTextNochlejka= (nameTitle, nameSubtitle, numberArrName, numberArrDe
 
 
 
-radjiItem.forEach(item => {
-    item.addEventListener('click', () => {
-        console.log(radjiItem);
-        radjiBlock.style.display = 'flex'
-    })
-})
 
 
 
@@ -238,6 +232,14 @@ fetch(url)
   })
   .catch(error => console.log('Error', error))
 
+
+  
+radjiItem.forEach(item => {
+    item.addEventListener('click', () => {
+        console.log(radjiItem);
+        radjiBlock.style.display = 'flex'
+    })
+})
 // const pointLink = document.querySelectorAll('.point-link');
 
 // console.log(pointLink);
@@ -253,3 +255,4 @@ fetch(url)
 // // localStorage.clear()
 
 // console.log(document.getElementById(counter));
+

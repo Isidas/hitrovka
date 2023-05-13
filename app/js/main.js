@@ -339,12 +339,6 @@ const addCardTextNochlejka = (nameTitle, nameSubtitle, numberArrName, numberArrD
     null;
   }
 };
-radjiItem.forEach(item => {
-  item.addEventListener('click', () => {
-    console.log(radjiItem);
-    radjiBlock.style.display = 'flex';
-  });
-});
 fetch(url).then(response => response.json()).then(resp => {
   console.log(resp);
   const location = resp.location;
@@ -355,7 +349,12 @@ fetch(url).then(response => response.json()).then(resp => {
   addCardTextAntikvar(antikvarTitle, antikvarSubTitle, location[3].name, location[3].desc);
   addCardTextNochlejka(nochlejkaTitle, nochlejkaSubTitle, location[4].name, location[4].desc);
 }).catch(error => console.log('Error', error));
-
+radjiItem.forEach(item => {
+  item.addEventListener('click', () => {
+    console.log(radjiItem);
+    radjiBlock.style.display = 'flex';
+  });
+});
 // const pointLink = document.querySelectorAll('.point-link');
 
 // console.log(pointLink);

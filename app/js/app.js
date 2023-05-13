@@ -33,7 +33,7 @@ const start_texts = [
   function initMap () {
     let maxLoc = Cookies.get('location')
     if (!maxLoc) maxLoc = 0
-  
+    console.log(123);
     const locations = document.querySelectorAll('.point-item a')
     for (let i = 0; i < locations.length; i++) {
       const loc = locations[i];
@@ -44,7 +44,7 @@ const start_texts = [
     }
   }
   
-  if (curUrl === 'map.html') initMap()
+  if (curUrl.includes('map')) initMap()
   
   //map link
   function setMapLink () {
@@ -67,4 +67,4 @@ const start_texts = [
   }
   setMapLink()
   
-  
+  console.log(123123);
