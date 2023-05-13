@@ -133,7 +133,7 @@ const stylesBackend = () => {
 
 // scripts
 const scripts = () => {
-  return src(paths.srcMainJs)
+  return src(paths.srcFullJs)
     .pipe(plumber(
       notify.onError({
         title: "JS",

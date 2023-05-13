@@ -111,14 +111,13 @@
         
     }
     .hero_description {
-        opacity: 0;
-        overflow: hidden;
+
         position: absolute;
-        bottom: 10%;
+        bottom: 5%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 300;
-        width: 60vw;
+        width: 692px;
         height: auto;
         padding: 18px 14px 30px 14px;
         background: rgba(0, 0, 0, 0.35);

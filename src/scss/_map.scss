@@ -52,6 +52,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            .point-link {
+                // pointer-events: none; 
+            }
             .point-cirkle {
                 width: 62px;
                 height: 62px;
@@ -103,6 +106,10 @@
             
         }
         .active {
+            .point-link {
+                pointer-events: auto;
+                cursor: pointer;
+            }
             .point-cirkle {
                 background-color: #D3996D;
             }

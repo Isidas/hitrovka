@@ -1,7 +1,5 @@
 
-
 const url = 'https://hitrovka.woman.ru/get_data/';
-
 
 const antikvarTitle = document.querySelector('.antikvar_title');
 const antikvarSubTitle = document.querySelector('.antikvar_subtitle');
@@ -17,6 +15,7 @@ const nochlejkaSubTitle = document.querySelector('.nochlejka_subtitle');
 const radjiBlock= document.querySelector('.radji_dialog');
 const radjiItem= document.querySelectorAll('.radji-item');
 
+
 const kru = document.querySelector('.kru');
 const porech = document.querySelector('.porech');
 const woman = document.querySelector('.woman');
@@ -24,30 +23,37 @@ const kruDescr = document.querySelector('.kru-descr');
 const porechDescr = document.querySelector('.porech-descr');
 const womanDescr = document.querySelector('.woman-descr');
 
-kru.addEventListener('mouseover', () => {
-    kruDescr.style.opacity = '1'
-    kruDescr.style.overflow = 'show'
-})
-kru.addEventListener('mouseleave', () => {
-    kruDescr.style.opacity = '0'
-    kruDescr.style.overflow = 'hidden'
-})
-porech.addEventListener('mouseover', () => {
-    porechDescr.style.opacity = '1'
-    porechDescr.style.overflow = 'show'
-})
-porech.addEventListener('mouseleave', () => {
-    porechDescr.style.opacity = '0'
-    porechDescr.style.overflow = 'hidden'
-})
-woman.addEventListener('mouseover', () => {
-    womanDescr.style.opacity = '1'
-    womanDescr.style.overflow = 'show'
-})
-woman.addEventListener('mouseleave', () => {
-    womanDescr.style.opacity = '0'
-    womanDescr.style.overflow = 'hidden'
-})
+
+const start_texts = [
+    /*01*/{title: "Константин Станиславский",
+      text: "Режиссер с нестандартным подходом к поиску тем. Интеллектуал с развитой интуицией. Широкий кругозор, любознательность и настойчивость помогают решать самые сложные задачи и выпутываться из всевозможных передряг. Не лишен актерских качеств."},
+    /*02*/{title: "Владимир Гиляровский",
+      text: 'Журналист, знакомый с различными сторонами человеческой жизни, включая самые неприглядные. Обширный круг знакомств в самых разных сферах, умение находить общий язык практически с любым человеком — от бродяги и преступника до аристократа, — а также доскональное знание московских трущоб и их обитателей не раз выручали его в сложных ситуациях.'},
+    /*03*/{title: 'Княжна',
+      text: 'Обитательница Хитровки, воровка. Утверждает, что она — потомок аристократического рода, но доказать это невозможно, хоть она образованна и даже говорит по-французски. Несмотря на суровую жизнь, отличается благородством. Находчива.'},
+  ]
+  
+  function urlSegment(num) {return location.pathname.split('/')[num]}
+  const curUrl = urlSegment(1)
+  if (curUrl === 'nochlejka') Cookies.set('location', 0)
+  
+  
+  //index
+  function setStartEvents () {
+    const persons = document.querySelectorAll('.main_hero-section img')
+    console.log(persons)
+    if (persons.length)
+      for (let i = 0; i < persons.length; i++) {
+        persons[i].onmouseover = function (e) {
+          const title = document.querySelector('.hero_description .hero-title')
+          const text = document.querySelector('.hero_description .hero-subtitle')
+          title.innerHTML = start_texts[i].title
+          text.innerHTML = start_texts[i].text
+        }
+      }
+  }
+
+
 
 
 const changeDialogTraktir = () => {
@@ -203,10 +209,12 @@ const addCardTextNochlejka= (nameTitle, nameSubtitle, numberArrName, numberArrDe
 
 
 radjiItem.forEach(item => {
-    item.addEventListener('mouseover', () => {
+    item.addEventListener('click', () => {
+        console.log(radjiItem);
         radjiBlock.style.display = 'flex'
     })
 })
+
 
 
 
@@ -230,44 +238,18 @@ fetch(url)
   })
   .catch(error => console.log('Error', error))
 
-const pointLink = document.querySelectorAll('.point-link');
+// const pointLink = document.querySelectorAll('.point-link');
 
-console.log(pointLink);
-
-
-// let counter = localStorage.getItem('counter');
-
-// // Проверяем, есть ли сохраненное значение
-// if (counter !== null) {
-//   // Преобразуем значение в число
-//   counter = parseInt(counter, 10);
-// } else {
-//   // Значение не было сохранено, устанавливаем значение по умолчанию
-//   counter = 1;
-// }
-
-// Увеличиваем счетчик
-// pointLink.forEach(item => {
-//     if(item.classList.contains('active')) {
-//        item.addEventListener('click', () => {
-//         counter++;
-//         localStorage.setItem('counter', counter);
-//         item.classList.remove('active')
-//         document.getElementById(counter).classList.add('active');
-//        })
-//     } else {
-//         item.style.cursor = 'default'
-//         item.addEventListener('click',(event) => {
-//             event.preventDefault();
-//      });
-//     }
-// })
-
-// Сохраняем новое значение счетчика в localStorage
+// console.log(pointLink);
 
 
-// Выводим значение счетчика в консоль
-console.log(counter);
-// localStorage.clear()
 
-console.log(document.getElementById(counter));
+
+// // Сохраняем новое значение счетчика в localStorage
+
+
+// // Выводим значение счетчика в консоль
+// console.log(counter);
+// // localStorage.clear()
+
+// console.log(document.getElementById(counter));
