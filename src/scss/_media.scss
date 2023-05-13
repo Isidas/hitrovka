@@ -1,0 +1,45 @@
+@media screen and (max-width: 1440px) {
+    .main {
+        .container {
+            .main_logo-section{
+                width: 252px;
+                height: 136px;
+                .logo-img {
+                    width: 100%;
+                    height: auto;
+                }
+                .logo-text {
+                    max-width: 197px;
+                    height: 22px;
+                    margin: 25px 0 0 0;
+                }
+            }
+            
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .main {
+        .container {
+            padding-top: 26px;
+            display: flex;
+            flex-direction: column;
+            // align-items: center;S
+            .main_logo-section{
+                width: 252px;
+                height: 136px;
+                justify-content: center;
+                align-items: center;
+                margin: 26px auto;
+                .logo-text {
+                    margin: 38px 0 0 0;
+                    max-width: 197px;
+                    height: 22px;
+                }
+            }
+            
+        }
+        
+    }
+}

@@ -1,0 +1,95 @@
+.nochlejka {
+    overflow-x: hidden;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    @include bgPosition('../img/nochlejka/nochlejka.png');
+    @media screen and (max-width: 800px) {
+        @include bgPosition('../img/nochlejka/mobile_nochlejkaj.jpg');
+    }
+    .card_block {
+        .card_content {
+            margin: 2% 0 0 0%;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            .card_text {
+                align-self: flex-start;
+                .card_title {
+                    max-width: 733px;
+                }
+                .card_subtitle {
+                    max-width: 822px;
+                }
+            }
+            .card_videoblock {
+                margin: 8% 5% 0 0;
+                max-width: 848px;
+                height: 434px;
+                .video_link {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    .video {
+                        max-width: 100%;
+                    }
+                    .play {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+                
+                @media (max-width: 1000px) {
+                    display: none;
+                }
+            }
+            @media (max-width: 1000px) {
+                margin: 56px auto 0 auto;
+                max-width: 90vw;
+            }
+        }
+        .nochlejka_kontent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            .card_dialog {
+                margin-top: 70px;
+                grid-template-columns: 1fr 4fr;
+            }
+            .mobile {
+                display: none;
+                .video_link {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    .video {
+                        max-width: 90%;
+                        height: auto;
+                    }  
+                    .play {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+                
+                @media (max-width: 1000px) {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+        .card_label {
+            margin: -5% auto 0 auto;
+            @media (max-height: 800px) {
+                margin: 5% auto 0% auto;
+                flex-direction: row-reverse;
+            }
+        }
+    }
+}

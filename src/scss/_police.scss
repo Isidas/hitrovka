@@ -1,0 +1,47 @@
+.police {
+    overflow-x: hidden;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    @include bgPosition('../img/police/police.png');
+    background-position: right;
+    @media screen and (max-width: 800px) {
+        @include bgPosition('../img/police/policeBgMobile.png');
+    }
+    .card_block {
+        .card_text {
+            justify-content: center;
+            margin: 15% 10% 0 0;
+            .card_title {
+                max-width: 864px;
+                // margin: 20px 0 0 15%;
+            }
+        }   .card_subtitle {
+            max-width: 729px;
+            // margin: 20px 0 0 15%;
+            }
+            .map_link {
+                font-family: 'SangBleuSunrise';
+                text-transform: uppercase;
+                text-decoration: none;
+                display: flex;
+                justify-content: center;
+                align-items: start;
+                margin: 0;
+                .remove_map {
+                    color: #B58260;
+                    font-size: 28px;
+                    @media (max-width: 800px) {
+                        // margin: 0 auto;
+                        text-align: center;
+                        font-size: 18px;
+                        line-height: 24px;
+                    }
+                }
+            }
+        .card_label {
+            flex-direction: row-reverse;
+            margin: -3% auto 0 auto;
+        }
+    }
+}

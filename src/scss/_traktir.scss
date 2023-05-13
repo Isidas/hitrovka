@@ -1,0 +1,18 @@
+.traktir {
+    overflow-x: hidden;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    @include bgPosition('../img/traktir/traktir.webp');
+    background-position: right;
+    @media screen and (max-width: 800px) {
+        @include bgPosition('../img/traktir/traktirMobile.webp');
+        background-size: cover;
+        background-position: center;
+    }  
+    .card_block {
+        .card_text {
+            margin: 10% 0 0 5%;
+        }
+    } 
+}

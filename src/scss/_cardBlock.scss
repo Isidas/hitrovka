@@ -1,0 +1,176 @@
+.card_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    .card_text {
+        margin: 5% 0 0 5%;
+        max-width: 50vw; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .card_title {
+            margin: 0 auto;
+            max-width: 489px;
+            font-family: 'Rubik Glitch';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 64px;
+            line-height: 76px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #D3996D;
+            @media (max-width: 800px) {
+                font-size: 58px;
+                line-height: 58px;
+            }
+            @media (max-width: 500px) {
+                font-size: 48px;
+                line-height: 48px;
+            }
+            @media (max-width: 425px) {
+                font-size: 36px;
+                line-height: 48px;
+            }
+        }
+        .card_subtitle {
+            position: relative;
+            z-index: 50;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 24px;
+            line-height: 28px;
+            text-align: center;
+            letter-spacing: 0.04em;
+            color: #D3996D;
+            @media (max-width: 800px) {
+                font-size: 18px;
+                line-height: 20px;
+            }
+        }
+        @media (max-width: 800px) {
+            margin: 56px auto 0 auto;
+            max-width: 90vw;
+        }
+        @media (max-height: 800px) {
+            margin: 0;
+            // max-width: 90vw;
+        }
+    }
+    .card_mobile-img {
+        display: none;
+        @media (max-width: 800px) {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            width: 100%;
+            .mobile-img {
+                max-width: 80%;
+            }
+        }
+    }
+    .card_dialog {
+        cursor: pointer;
+        padding: 0px 10px;
+        align-self: center;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        justify-items: center;
+        align-items: center;
+        width: 60vw;
+        margin: 200px auto 0 auto;
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid #971C1C;
+        backdrop-filter: blur(6px);
+        border-radius: 4px;
+        height: fit-content;
+        transition: 0.2s ease-in-out;
+        .card_dialog-avatar {
+            max-width: 100%;
+        }
+        .card_dialog-text {
+            max-width: 669px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 28px;
+            line-height: 35px;
+            text-align: center;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #FFDBD3;
+            transition: 0.2s ease;
+            .map_link {
+                text-decoration: none;
+                font-family: 'SangBleuSunrise';
+                .remove_map {
+                    color: #B58260;
+                    font-size: 28px;
+                    @media (max-width: 800px) {
+                        font-size: 18px;
+                        line-height: 24px;
+                    }
+                }
+            }
+            
+            @media (max-width: 800px) {
+                font-size: 18px;
+                line-height: 24px;
+            }
+            @media (max-width: 800px) {
+                font-size: 16px;
+                line-height: 16px;
+            }
+            @media (max-width: 500px) {
+                font-size: 14px;
+                line-height: 14px;
+            }
+        }
+        .card_dialog-item {
+            max-width: 100%;
+            z-index: 0;
+        }
+        &:hover {
+            transition: 0.2s ease;
+            width: 63vw;
+        }
+        @media (max-width: 800px) {
+            margin: -8% auto 0 auto;
+            width: 90vw;
+        }
+    }
+    .card_label {
+        position: relative;
+        z-index: 20;
+        margin: 0% auto 5% auto;
+        padding: 25px 0 25px 0;
+        width: 95vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 132px;
+        .label {
+            width: 241px;
+            height: 132px;
+            @media (max-width: 800px) {
+                width: 142px;
+                height: 76px;
+            }
+        }
+        .age {
+            width: 70px;
+            height: 46px;
+            @media (max-width: 800px) {
+                width: 47px;
+                height: 30px;
+            }
+        }
+        @media (max-height: 800px) {
+            margin: 0% auto 0% auto;
+        }
+    }
+}
