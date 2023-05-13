@@ -8,7 +8,7 @@ const start_texts = [
   ]
   
   function urlSegment(num) {return location.pathname.split('/')[num]}
-  const curUrl = urlSegment(1)
+  const curUrl = urlSegment(1)?.replace('.html', '')
   if (curUrl === 'nochlejka') Cookies.set('location', 0)
   
   
@@ -33,13 +33,13 @@ const start_texts = [
   function initMap () {
     let maxLoc = Cookies.get('location')
     if (!maxLoc) maxLoc = 0
-    console.log(123);
     const locations = document.querySelectorAll('.point-item a')
     for (let i = 0; i < locations.length; i++) {
       const loc = locations[i];
       if (i > maxLoc) {
         loc.removeAttribute('href')
-        loc.querySelector('.point-cirkle').classList.add('disabled')
+      } else {
+        loc.classList.add('active')
       }
     }
   }
@@ -67,4 +67,3 @@ const start_texts = [
   }
   setMapLink()
   
-  console.log(123123);

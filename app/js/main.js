@@ -7,6 +7,7 @@
   \***********************/
 /***/ (() => {
 
+var _urlSegment;
 const start_texts = [/*01*/{
   title: "Константин Станиславский",
   text: "Режиссер с нестандартным подходом к поиску тем. Интеллектуал с развитой интуицией. Широкий кругозор, любознательность и настойчивость помогают решать самые сложные задачи и выпутываться из всевозможных передряг. Не лишен актерских качеств."
@@ -20,7 +21,7 @@ const start_texts = [/*01*/{
 function urlSegment(num) {
   return location.pathname.split('/')[num];
 }
-const curUrl = urlSegment(1);
+const curUrl = (_urlSegment = urlSegment(1)) === null || _urlSegment === void 0 ? void 0 : _urlSegment.replace('.html', '');
 if (curUrl === 'nochlejka') Cookies.set('location', 0);
 
 //index
@@ -42,13 +43,13 @@ if (curUrl === '') setStartEvents();
 function initMap() {
   let maxLoc = Cookies.get('location');
   if (!maxLoc) maxLoc = 0;
-  console.log(123);
   const locations = document.querySelectorAll('.point-item a');
   for (let i = 0; i < locations.length; i++) {
     const loc = locations[i];
     if (i > maxLoc) {
       loc.removeAttribute('href');
-      loc.querySelector('.point-cirkle').classList.add('disabled');
+    } else {
+      loc.classList.add('active');
     }
   }
 }
@@ -84,7 +85,6 @@ function setMapLink() {
   });
 }
 setMapLink();
-console.log(123123);
 
 /***/ }),
 
@@ -174,6 +174,7 @@ console.log(123123);
 const url = 'https://hitrovka.woman.ru/get_data/';
 const antikvarTitle = document.querySelector('.antikvar_title');
 const antikvarSubTitle = document.querySelector('.antikvar_subtitle');
+const antikvarAvatar = document.querySelector('.antikvar-avatar');
 const radjiTitle = document.querySelector('.radji_title');
 const radjiSubTitle = document.querySelector('.radji_subtitle');
 const tractiriTitle = document.querySelector('.traktir_title');
@@ -182,6 +183,7 @@ const policeTitle = document.querySelector('.police_title');
 const policeSubTitle = document.querySelector('.police_subtitle');
 const nochlejkaTitle = document.querySelector('.nochlejka_title');
 const nochlejkaSubTitle = document.querySelector('.nochlejka_subtitle');
+const nochlejkaAvatar = document.querySelector('.nochlejka-avatar');
 const radjiBlock = document.querySelector('.radji_dialog');
 const radjiItem = document.querySelectorAll('.radji-item');
 const kru = document.querySelector('.kru');
@@ -190,35 +192,6 @@ const woman = document.querySelector('.woman');
 const kruDescr = document.querySelector('.kru-descr');
 const porechDescr = document.querySelector('.porech-descr');
 const womanDescr = document.querySelector('.woman-descr');
-const start_texts = [/*01*/{
-  title: "Константин Станиславский",
-  text: "Режиссер с нестандартным подходом к поиску тем. Интеллектуал с развитой интуицией. Широкий кругозор, любознательность и настойчивость помогают решать самые сложные задачи и выпутываться из всевозможных передряг. Не лишен актерских качеств."
-}, /*02*/{
-  title: "Владимир Гиляровский",
-  text: 'Журналист, знакомый с различными сторонами человеческой жизни, включая самые неприглядные. Обширный круг знакомств в самых разных сферах, умение находить общий язык практически с любым человеком — от бродяги и преступника до аристократа, — а также доскональное знание московских трущоб и их обитателей не раз выручали его в сложных ситуациях.'
-}, /*03*/{
-  title: 'Княжна',
-  text: 'Обитательница Хитровки, воровка. Утверждает, что она — потомок аристократического рода, но доказать это невозможно, хоть она образованна и даже говорит по-французски. Несмотря на суровую жизнь, отличается благородством. Находчива.'
-}];
-function urlSegment(num) {
-  return location.pathname.split('/')[num];
-}
-const curUrl = urlSegment(1);
-if (curUrl === 'nochlejka') Cookies.set('location', 0);
-
-//index
-function setStartEvents() {
-  const persons = document.querySelectorAll('.main_hero-section img');
-  console.log(persons);
-  if (persons.length) for (let i = 0; i < persons.length; i++) {
-    persons[i].onmouseover = function (e) {
-      const title = document.querySelector('.hero_description .hero-title');
-      const text = document.querySelector('.hero_description .hero-subtitle');
-      title.innerHTML = start_texts[i].title;
-      text.innerHTML = start_texts[i].text;
-    };
-  }
-}
 const changeDialogTraktir = () => {
   const traktirDialog = document.querySelector('.tractir_dialog');
   const traktirBlock = document.querySelector('.tractir_block');
@@ -280,13 +253,6 @@ const changeDialogNochlejka = () => {
     if (currentIndex === texts.length - 1) {
       nochlejkaDialog.removeEventListener('click', changeText);
       nochlejkaDialog.innerHTML = `${texts[currentIndex]}`;
-      // nochlejkaVideoblock.innerHTML = `
-      // <a href="https://www.youtube.com/watch?v=Whs6bBJwBfI&ab_channel=%D0%92%D0%A0%D0%B5%D0%B9%D1%82%D0%B8%D0%BD%D0%B3%D0%B5" class="video_link" target="_blank">
-      //             <video class="video"  poster="./img/nochlejka/Rectangle8.webp">
-      //                 <source src="https://www.youtube.com/watch?v=Whs6bBJwBfI&ab_channel=%D0%92%D0%A0%D0%B5%D0%B9%D1%82%D0%B8%D0%BD%D0%B3%D0%B5">
-      //             </video>
-      //             <img class="play" src="./img/Vector.svg" alt="img">
-      //         </a>  `
     } else {
       currentIndex = (currentIndex + 1) % texts.length;
     }
@@ -299,6 +265,25 @@ const changeDialogNochlejka = () => {
   }
 };
 changeDialogNochlejka();
+function selectHero(heroId) {
+  localStorage.setItem('selectedHero', heroId);
+}
+if (kru && porech && woman) {
+  kru.addEventListener('click', function () {
+    selectHero('kru');
+  });
+  porech.addEventListener('click', function () {
+    selectHero('porech');
+  });
+  woman.addEventListener('click', function () {
+    selectHero('woman');
+  });
+}
+// localStorage.clear()
+const selectedHero = localStorage.getItem('selectedHero');
+const kruAvatar = './img/kruEclips.webp';
+const porechAvatar = './img/porech6.webp';
+const womanAvatar = '../img/wonam.webp';
 const addCardTextRadji = (nameTitle, nameSubtitle, numberArrName, numberArrDescr) => {
   if (nameTitle) {
     nameTitle.textContent = numberArrName;
@@ -307,8 +292,18 @@ const addCardTextRadji = (nameTitle, nameSubtitle, numberArrName, numberArrDescr
     null;
   }
 };
-const addCardTextAntikvar = (nameTitle, nameSubtitle, numberArrName, numberArrDescr) => {
+const addCardTextAntikvar = (nameTitle, nameSubtitle, numberArrName, numberArrDescr, cardDialogAvatar) => {
   if (nameTitle) {
+    if (selectedHero === 'kru') {
+      cardDialogAvatar.src = kruAvatar;
+      imgElement.alt = 'hero';
+    } else if (selectedHero === 'porech') {
+      cardDialogAvatar.src = porechAvatar;
+      imgElement.alt = 'hero';
+    } else if (selectedHero === 'woman') {
+      cardDialogAvatar.src = womanAvatar;
+      imgElement.alt = 'hero';
+    }
     nameTitle.textContent = numberArrName;
     nameSubtitle.textContent = numberArrDescr;
   } else {
@@ -331,8 +326,18 @@ const addCardTextPolice = (nameTitle, nameSubtitle, numberArrName, numberArrDesc
     null;
   }
 };
-const addCardTextNochlejka = (nameTitle, nameSubtitle, numberArrName, numberArrDescr) => {
+const addCardTextNochlejka = (nameTitle, nameSubtitle, numberArrName, numberArrDescr, cardDialogAvatar) => {
   if (nameTitle) {
+    if (selectedHero === 'kru') {
+      cardDialogAvatar.src = kruAvatar;
+      imgElement.alt = 'hero';
+    } else if (selectedHero === 'porech') {
+      cardDialogAvatar.src = porechAvatar;
+      imgElement.alt = 'hero';
+    } else if (selectedHero === 'woman') {
+      cardDialogAvatar.src = womanAvatar;
+      imgElement.alt = 'hero';
+    }
     nameTitle.textContent = numberArrName;
     nameSubtitle.textContent = numberArrDescr;
   } else {
@@ -346,8 +351,8 @@ fetch(url).then(response => response.json()).then(resp => {
   addCardTextRadji(radjiTitle, radjiSubTitle, location[0].name, location[0].desc);
   addCardTextTractir(tractiriTitle, tractirSubTitle, location[1].name, location[1].desc);
   addCardTextPolice(policeTitle, policeSubTitle, location[2].name, location[2].desc);
-  addCardTextAntikvar(antikvarTitle, antikvarSubTitle, location[3].name, location[3].desc);
-  addCardTextNochlejka(nochlejkaTitle, nochlejkaSubTitle, location[4].name, location[4].desc);
+  addCardTextAntikvar(antikvarTitle, antikvarSubTitle, location[3].name, location[3].desc, antikvarAvatar);
+  addCardTextNochlejka(nochlejkaTitle, nochlejkaSubTitle, location[4].name, location[4].desc, nochlejkaAvatar);
 }).catch(error => console.log('Error', error));
 radjiItem.forEach(item => {
   item.addEventListener('click', () => {
@@ -355,17 +360,6 @@ radjiItem.forEach(item => {
     radjiBlock.style.display = 'flex';
   });
 });
-// const pointLink = document.querySelectorAll('.point-link');
-
-// console.log(pointLink);
-
-// // Сохраняем новое значение счетчика в localStorage
-
-// // Выводим значение счетчика в консоль
-// console.log(counter);
-// // localStorage.clear()
-
-// console.log(document.getElementById(counter));
 
 /***/ }),
 
