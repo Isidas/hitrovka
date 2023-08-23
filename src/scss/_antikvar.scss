@@ -1,20 +1,91 @@
 .antikvar {
-    overflow-x: hidden;
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    @include bgPosition('../img/antikvar/bgAntikvar.png');
-    @media screen and (max-width: 800px) {
-        @include bgPosition('../img/antikvar/antikvar.png');
-    } 
-    .card_block {
-        .card_text {
-            align-self: flex-end;
-            margin: 10% 5% 0 0;
+  overflow-x: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  @include bgPosition('../img/antikvar/bgAntikvar.png');
+  @media (max-aspect-ratio: 1/1) {
+    @include bgPosition('../img/antikvar/antikvar.png');
+  }
+
+
+  .card_block {
+    .card_text {
+      align-self: flex-end;
+      margin: 15% 5% 0 0;
+
+      .radji_subtitle {
+        max-width: 755px;
+      }
+
+      @media (max-aspect-ratio: 1/1) {
+        align-self: center;
+        margin: 3% 0 0 0 ;
+      }
+    }
+
+    .card_mobile-img {
+      align-self: center;
+      position: relative;
+
+      .card_item-mobile {
+        display: none;
+        @media (max-aspect-ratio: 1/1) {
+          display: block;
+          position: absolute;
+          max-width: 17%;
+          top: 58%;
+          left: 27%;
         }
-        .card_dialog {
-            grid-template-columns: 1fr 3fr 1fr;
+      }
+
+    }
+
+    .card_dialog {
+      max-width: 827px;
+      grid-template-columns: 1fr 3fr 1fr;
+      gap: 1rem;
+      text-align: center;
+      flex-direction: column;
+      padding: 16px;
+      margin: 34px auto 0 auto;
+
+      .card_dialog-text {
+        justify-self: center;
+      }
+
+      @media (min-aspect-ratio: 1/1) {
+        width: 60vw;
+      }
+
+      .map_link {
+        font-family: 'SangBleuSunrise';
+        text-transform: uppercase;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        margin: 0;
+
+        .remove_map {
+          color: #B58260;
+          font-size: 28px;
+          @media (max-aspect-ratio: 1/1) {
+            text-align: center;
+            font-size: 18px;
+            line-height: 24px;
+          }
         }
-    } 
+      }
+
+    }
+
+    .card_label {
+      margin: 0 auto 0 auto;
+      @media (max-aspect-ratio: 1/1) {
+        margin: 30vmin auto 0 auto;
+      }
+    }
+  }
 
 }

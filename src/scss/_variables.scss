@@ -1,13 +1,6 @@
-.container {
-    max-width: 1920px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-}
 @mixin bgPosition($property) {
-    background-image: url($property);
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url($property);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 

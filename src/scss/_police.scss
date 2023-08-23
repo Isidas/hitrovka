@@ -1,47 +1,87 @@
 .police {
-    overflow-x: hidden;
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    @include bgPosition('../img/police/police.png');
-    background-position: right;
-    @media screen and (max-width: 800px) {
-        @include bgPosition('../img/police/policeBgMobile.png');
+  overflow-x: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  @include bgPosition('../img/police/police.webp');
+  background-position: right;
+  @media (max-aspect-ratio: 1/1) {
+    @include bgPosition('../img/police/policeBgMobile.png');
+    background-position: left;
+  }
+  .card_block {
+    .card_text {
+      align-self: flex-start;
+      margin: 5% 0 0 5%;
+
+      .radji_subtitle {
+        max-width: 755px;
+      }
+
+      @media (max-aspect-ratio: 1/1) {
+        align-self: center;
+        margin: 3% 0 0 0 ;
+      }
     }
-    .card_block {
-        .card_text {
-            justify-content: center;
-            margin: 15% 10% 0 0;
-            .card_title {
-                max-width: 864px;
-                // margin: 20px 0 0 15%;
-            }
-        }   .card_subtitle {
-            max-width: 729px;
-            // margin: 20px 0 0 15%;
-            }
-            .map_link {
-                font-family: 'SangBleuSunrise';
-                text-transform: uppercase;
-                text-decoration: none;
-                display: flex;
-                justify-content: center;
-                align-items: start;
-                margin: 0;
-                .remove_map {
-                    color: #B58260;
-                    font-size: 28px;
-                    @media (max-width: 800px) {
-                        // margin: 0 auto;
-                        text-align: center;
-                        font-size: 18px;
-                        line-height: 24px;
-                    }
-                }
-            }
-        .card_label {
-            flex-direction: row-reverse;
-            margin: -3% auto 0 auto;
+
+    .card_mobile-img {
+      align-self: center;
+      position: relative;
+
+      .card_item-mobile {
+        display: none;
+        @media (max-aspect-ratio: 1/1) {
+          display: block;
+          position: absolute;
+          max-width: 17%;
+          top: 58%;
+          left: 27%;
         }
+      }
+
     }
+
+    .card_dialog {
+      max-width: 827px;
+      z-index: 200;
+      grid-template-columns: 1fr;
+      text-align: center;
+      flex-direction: column;
+      margin: 34px auto 0 auto;
+
+      .card_dialog-text {
+        justify-self: center;
+      }
+
+      @media (min-aspect-ratio: 1/1) {
+        width: 60vw;
+      }
+
+      .map_link {
+        width: 100%;
+        font-family: 'SangBleuSunrise';
+        text-transform: uppercase;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        margin: 0;
+
+        .remove_map {
+          color: #B58260;
+          font-size: 28px;
+          @media (max-aspect-ratio: 1/1) {
+            text-align: center;
+            font-size: 18px;
+            line-height: 24px;
+          }
+        }
+      }
+
+    }
+
+    .card_label {
+      margin: 0 auto 0 auto;
+    }
+  }
 }

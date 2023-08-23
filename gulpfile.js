@@ -49,6 +49,8 @@ const paths = {
   buildJsFolder: `${buildFolder}/js`,
   srcPartialsFolder: `${srcFolder}/partials`,
   resourcesFolder: `${srcFolder}/resources`,
+  fontsFolder: `${srcFolder}/fonts`,
+  buildFontsFolder: `${buildFolder}/fonts`,
 };
 
 let isProd = false; // dev by default
@@ -92,7 +94,7 @@ const svgSprites = () => {
 
 // scss styles
 const styles = () => {
-  return src(paths.srcScss, { sourcemaps: !isProd })
+  return src(paths.srcScss, {sourcemaps: !isProd})
     .pipe(plumber(
       notify.onError({
         title: "SCSS",
@@ -108,7 +110,7 @@ const styles = () => {
     .pipe(gulpif(isProd, cleanCSS({
       level: 2
     })))
-    .pipe(dest(paths.buildCssFolder, { sourcemaps: '.' }))
+    .pipe(dest(paths.buildCssFolder, {sourcemaps: '.'}))
     .pipe(browserSync.stream());
 };
 
@@ -133,7 +135,7 @@ const stylesBackend = () => {
 
 // scripts
 const scripts = () => {
-  return src(paths.srcFullJs)
+  return src(paths.srcMainJs)
     .pipe(plumber(
       notify.onError({
         title: "JS",
@@ -146,20 +148,20 @@ const scripts = () => {
         filename: 'main.js',
       },
       module: {
-        rules: [{
-          test: /\.m?js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                ['@babel/preset-env', {
-                  targets: "defaults"
-                }]
-              ]
-            }
-          }
-        }]
+        // rules: [{
+        //   test: /\.m?js$/,
+        //   exclude: /node_modules/,
+        //   use: {
+        //     loader: 'babel-loader',
+        //     options: {
+        //       presets: [
+        //         ['@babel/preset-env', {
+        //           targets: "defaults"
+        //         }]
+        //       ]
+        //     }
+        //   }
+        // }]
       },
       devtool: !isProd ? 'source-map' : false
     }))
@@ -211,13 +213,13 @@ const scriptsBackend = () => {
     .pipe(browserSync.stream());
 }
 
-const resources = () => {
-  return src(`${paths.resourcesFolder}/**`)
-    .pipe(dest(buildFolder))
+const fonts = () => {
+  return src(`${paths.fontsFolder}/**`)
+    .pipe(dest(paths.buildFontsFolder))
 }
 
 const images = () => {
-  return src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`])
+  return src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg,webp}`])
     .pipe(gulpif(isProd, image([
       image.mozjpeg({
         quality: 80,
@@ -266,17 +268,15 @@ const watchFiles = () => {
   watch(paths.srcFullJs, scripts);
   watch(`${paths.srcPartialsFolder}/*.html`, htmlInclude);
   watch(`${srcFolder}/*.html`, htmlInclude);
-  watch(`${paths.resourcesFolder}/**`, resources);
-  watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`, images);
-  watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, webpImages);
-  watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, avifImages);
+  watch(`${paths.fontsFolder}/**`, fonts);
+  watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg,webp}`, images);
   watch(paths.srcSvg, svgSprites);
 }
 
 const cache = () => {
   return src(`${buildFolder}/**/*.{css,js,svg,png,jpg,jpeg,webp,avif,woff2}`, {
-      base: buildFolder
-    })
+    base: buildFolder
+  })
     .pipe(rev())
     .pipe(revDel())
     .pipe(dest(buildFolder))
@@ -306,30 +306,16 @@ const htmlMinify = () => {
     .pipe(dest(buildFolder));
 }
 
-const zipFiles = (done) => {
-  del.sync([`${buildFolder}/*.zip`]);
-  return src(`${buildFolder}/**/*.*`, {})
-    .pipe(plumber(
-      notify.onError({
-        title: "ZIP",
-        message: "Error: <%= error.message %>"
-      })
-    ))
-    .pipe(zip(`${rootFolder}.zip`))
-    .pipe(dest(buildFolder));
-}
 
 const toProd = (done) => {
   isProd = true;
   done();
 };
 
-exports.default = series(clean, htmlInclude, scripts, styles, resources, images, webpImages, avifImages, svgSprites, watchFiles);
+exports.default = series(clean, htmlInclude, scripts, styles, fonts, images, webpImages, avifImages, svgSprites, watchFiles);
 
-exports.backend = series(clean, htmlInclude, scriptsBackend, stylesBackend, resources, images, webpImages, avifImages, svgSprites)
+exports.backend = series(clean, htmlInclude, scriptsBackend, stylesBackend, fonts, images, webpImages, avifImages, svgSprites)
 
-exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, images, webpImages, avifImages, svgSprites, htmlMinify);
+exports.build = series(toProd, clean, htmlInclude, scripts, styles, fonts, images, webpImages, avifImages, svgSprites, htmlMinify);
 
 exports.cache = series(cache, rewrite);
-
-// exports.zip = zipFiles;

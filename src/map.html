@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    
-    <title>Карта</title>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="./css/style.css" rel="stylesheet">
+
+  <title>Карта</title>
 </head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
-    <div class="map">
-        <img src="./img/womanSvg.svg" alt="label" class="womanSvg">
-        <img src="./img/title1.webp" alt="logo" class="logo">
-        <img src="./img/12.webp" alt="age" class="age">
-        <div class="point_block">
-            <div class="point-item point-raji">
-                <a id="1" rel="preload" href="./kvartira.html" class="point-link point-link1 active">
-                    <div class="point-cirkle"></div>
-                </a>
-                <p class="point-text">Квартира Раджи</p>
-            </div>
-          <div class="point-item point-traktir">
-            <a id="2" rel="preload" href="./traktir.html" class="point-link point-link2">
-              <div class="point-cirkle"></div>
-            </a>
-            <p class="point-text">Трактир “Каторга”</p>
-          </div>
-            <div class="point-item point-police">
-                <a id="3" rel="preload" href="./police.html" class="point-link point-link3">
-                    <div class="point-cirkle"></div>
-                </a>
-                <p class="point-text">Полицейский участок Мясницкий</p>
-            </div>
-        
-          <div class="point-item point-antikvar">
-            <a id="4" rel="preload" href="./antikvar.html" class="point-link point-link4">
-              <div class="point-cirkle"></div>
-            </a>
-            <p class="point-text">Антикварная лавка Тестова</p>
-          </div>
-        
-            <div class="point-item point-house">
-                <a id="5" rel="preload" href="./nochlejka.html" class="point-link point-link5">
-                    <div class="point-cirkle"></div>
-                </a>
-                <p class="point-text">Ночлежка Свиной дом</p>
-            </div>
-        
-        </div>
+<div class="preloader_wrapper">
+  <img alt="preloader" class="preloader" src="./img/title1.webp">
+</div>
+<div class="map">
+  <img alt="label" class="womanSvg" src="./img/womanSvg.svg">
+  <img alt="logo" class="logo" src="./img/title1.webp">
+  <img alt="age" class="age" src="./img/12.webp">
+  <div class="point_block">
+    <div class="point-item point-raji">
+      <a class="point-link point-link1 active" href="./kvartira.html" id="1" rel="preload">
+        <div class="point-cirkle"></div>
+      </a>
+      <p class="point-text">Квартира<br>Раджи</p>
     </div>
-    <script src="./js/main.js"></script>
-    <script src="./js/app.js"></script>
+    <div class="point-item point-traktir">
+      <a class="point-link point-link2" href="./traktir.html" id="2" rel="preload">
+        <div class="point-cirkle"></div>
+      </a>
+      <p class="point-text">Трактир<br>“Каторга”</p>
+    </div>
+    <div class="point-item point-police">
+      <a class="point-link point-link3" href="./police.html" id="3" rel="preload">
+        <div class="point-cirkle"></div>
+      </a>
+      <p class="point-text">Полицейский<br>участок<br>Мясницкий</p>
+    </div>
 
-    <!-- <script src="./js/cookies.js"></script> -->
+    <div class="point-item point-antikvar">
+      <a class="point-link point-link4" href="./antikvar.html" id="4" rel="preload">
+        <div class="point-cirkle"></div>
+      </a>
+      <p class="point-text">Антикварная<br>лавка Тестова</p>
+    </div>
+
+    <div class="point-item point-house">
+      <a class="point-link point-link5" href="./nochlejka.html" id="5" rel="preload">
+        <div class="point-cirkle"></div>
+      </a>
+      <p class="point-text">Ночлежка<br>Свиной<br>дом</p>
+    </div>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+<script src="./js/main.js"></script>
 </body>
 </html>

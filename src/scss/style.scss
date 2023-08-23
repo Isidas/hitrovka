@@ -1,24 +1,29 @@
-body {
-    overflow-x: hidden;
-    user-select: none;
-    background-color: #000;
+html, body {
+  overflow: hidden;
+  user-select: none;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
 }
+
 .preloader_wrapper {
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    background-color: #000;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .preloader {
-        max-width: 100%;
-        object-fit: cover;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .preloader {
+    max-width: 100%;
+    object-fit: cover;
+  }
 }
+
 @import '_null';
 @import '_variables';
 @import '_media';

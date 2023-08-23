@@ -1,61 +1,52 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="prefetch" href="./antikvar.html" />
-    <link rel="prefetch" href="./kvartira.html" />
-    <link rel="prefetch" href="./map.html" />
-    <link rel="prefetch" href="./nochlejka.html" />
-    <link rel="prefetch" href="./police.html" />
-    <link rel="prefetch" href="./traktir.html" />
-    <title>Хитровка</title>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="./css/style.css" rel="stylesheet">
+  <link href="./map.html" rel="prerender"/>
+  <title>Хитровка</title>
 </head>
 <body>
-
-    <div class="preloader_wrapper">
-        <img src="./img/title1.webp" alt="preloader" class="preloader">
+<div class="preloader_wrapper">
+  <img alt="preloader" class="preloader" src="./img/title1.webp">
+</div>
+<div class="main">
+  <div class="main_logo-section">
+    <img alt="Фильм Карена Шанхназарова 'Хитровка: Знак четырех'" class="logo-img" src="./img/title1.webp">
+    <a href="https://www.afisha.ru/movie/hitrovka-znak-chetyreh-273847/" class="ticket-link">Купить билет</a>
+  </div>
+  <div class="main_hero-section">
+    <img alt="hero" class="hero kru" id="kru" src="./img/main/Kru.webp">
+    <img alt="hero" class="hero porech" id="porech" src="./img/main/Porech.webp">
+    <img alt="hero" class="hero woman" id="woman" src="./img/main/woman.webp">
+    <div class="hero_description" style="display: none">
+      <h2 class="hero-title"></h2>
+      <p class="hero-subtitle"></p>
     </div>
-    <script src="./js/preloader.js"></script>
-    <div class="main">
-        <div class="container">
-            <div class="main_logo-section">
-                <img src="./img/title1.webp" alt="logo" class="logo-img">
-                <img src="./img/main/text.webp" alt="text" class="logo-text">
-            </div>
-            <div class="main_hero-section">
-                <img id="kru" src="./img/main/Kru1.webp" alt="hero" class="hero kru">
-                <img id="porech" src="./img/main/Porech.webp" alt="hero" class="hero porech">
-                <img id="woman" src="./img/main/woman.webp" alt="hero" class="hero woman">
-
-            </div>
-            <div class="hero_description kru-descr">
-                <h2 class="hero-title">Константин Станиславский</h2>
-                <p class="hero-subtitle">Режиссер с нестандартным подходом к поиску тем. Интеллектуал с развитой интуицией. Широкий кругозор, любознательность и настойчивость помогают решать самые сложные задачи и выпутываться из всевозможных передряг. Не лишен актерских качеств.</p>
-            </div>
-            <img src="./img/womanSvg.svg" alt="woman" class="main_womanSvg">
-            <img src="./img/12.webp" alt="age" class="main_age">
-            <a rel="preload" href="./map.html" class="main_link">
-                <p class="select-hero">«Выберите героя»</p>
-            </a>
-            <div class="main_decoration">
-                <img src="./img/main/stolb1.webp" alt="stolb" class="decoration stolb1">
-                <img src="./img/main/stolb2.webp" alt="stolb" class="decoration stolb2">
-                <img src="./img/main/keyart_11.webp" alt="keyart" class="decoration keyart">
-                <img src="./img/main/down1.webp" alt="down" class="decoration down">
-                <img src="./img/main/OWl1.webp" alt="owl" class="decoration owl">
-                <img src="./img/main/Layer1.webp" alt="Layer" class="decoration layer1">
-                <img src="./img/main/Layer2.webp" alt="Layer" class="decoration layer2">
-                <img src="./img/main/Layer3.webp" alt="Layer" class="decoration layer3">
-            </div>
-            <div class="main_blackout"></div>
-        </div>
-
-    </div>
-
-    <script src="./js/main.js"></script>
-    <script src="./js/app.js"></script>
+  </div>
+  <img alt="woman" class="main_womanSvg" src="./img/womanSvg.svg">
+  <img alt="age" class="main_age" src="./img/12.webp">
+  <a class="main_link" rel="preload">
+    <p class="select-hero">«Выберите героя»</p>
+  </a>
+  <div class="main_decoration">
+    <img alt="stolb" class="decoration stolb1" src="./img/main/stolb1.webp">
+    <img alt="stolb" class="decoration stolb2" src="./img/main/stolb2.webp">
+    <img alt="keyart" class="decoration keyart" src="./img/main/keyart_11.webp">
+    <img alt="down" class="decoration down" src="./img/main/down1.webp">
+    <img alt="owl" class="decoration owl" src="./img/main/OWl1.webp">
+    <img alt="Layer" class="decoration layer1" src="./img/main/Layer1.webp">
+    <img alt="Layer" class="decoration layer2" src="./img/main/Layer2.webp">
+    <img alt="Layer" class="decoration layer3" src="./img/main/Layer3.webp">
+  </div>
+  <div class="main_blackout"></div>
+  <div class="footer">
+    <a href="https://www.afisha.ru/movie/hitrovka-znak-chetyreh-273847/" class="ticket-link">Купить билет</a>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+<script src="./js/main.js"></script>
 </body>
 </html>
